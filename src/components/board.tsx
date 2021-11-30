@@ -16,6 +16,7 @@ import Tile from './tile'
 
 export default function Board(){
     let board = []
+    let idx = 0
     
 
     for(let j = 0; j < 8; j++){
@@ -27,13 +28,25 @@ export default function Board(){
             const gridValue = j+i + 2
             const tokenValue = getRandomValue(3)
 
-            board[j].push(<Tile number={gridValue} tokenValue={tokenValue}/>)
+            board[j].push(<Tile number={gridValue} tokenValue={tokenValue} idx={idx}/>)
+            idx++
         }
     }
+
+    console.log(board)
     
-    // for(let k=0; k<8; k++){
-    //     console.log(board[k])
-    // }
+    /**
+     * What: Count possible matches 
+     * Plan: start at (0,0) work right, down, and diagonal
+     * 
+     * pseudocode for working to the right:
+     * - compare current with next and i < 5
+     * if (board[0][i] === board[0][i+1]){
+     *    count += 1
+     * }
+     */
+
+    
 
 
     return <div id="board">{board}</div>
