@@ -19,14 +19,22 @@ export default function Board(){
     
 
     for(let j = 0; j < 8; j++){
+        
+        board[j] = new Array()
+
         for(let i = 0;  i < 8; i++){
 
             const gridValue = j+i + 2
             const tokenValue = getRandomValue(3)
-            
-            board.push(<Tile number={gridValue} tokenValue={tokenValue}/>)
+
+            board[j].push(<Tile number={gridValue} tokenValue={tokenValue}/>)
         }
     }
+    
+    // for(let k=0; k<8; k++){
+    //     console.log(board[k])
+    // }
+
 
     return <div id="board">{board}</div>
 }
