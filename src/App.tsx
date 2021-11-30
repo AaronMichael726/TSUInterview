@@ -5,7 +5,6 @@ import Board from './components/board'
 // complete according to readME
 
 /**
- * 
  * Create Board 
  * 8x8 Checkerboard
  */
