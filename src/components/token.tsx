@@ -1,16 +1,21 @@
 import './tile.css'
 
 interface Props {
-    tokenValue: number
+    tokenValue: string,
+    idx: number
 }
 
-export default function Token({ tokenValue }: Props){
+function getRandomValue(max: number) {
+    return Math.floor(Math.random() * max)
+}
 
-    if(tokenValue === 2){
-        return <img className="token" src="assets/blackToken.png"></img>
-    } else if (tokenValue === 1){
-        return <img className="token" src="assets/redToken.png"></img>
+export default function Token({ tokenValue, idx }: Props){
+
+    if(tokenValue === "black"){
+        return <div>2 {idx}<img className="token" src="assets/blackToken.png"></img></div>
+    } else if (tokenValue === "red"){
+        return <div>1 {idx}<img className="token" src="assets/redToken.png"></img></div>
     } else {
-        return <div></div>
+        return <div>0 {idx}</div>
     }
 }
