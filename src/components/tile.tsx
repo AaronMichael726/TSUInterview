@@ -4,7 +4,7 @@ import Token from './token'
 interface Props {
     number: number,
     tokenValue: string,
-    idx: number
+    idx: number,
 }
 
 /**
@@ -15,7 +15,6 @@ interface Props {
 export default function Tile({ number, tokenValue, idx }: Props){
 
     if (number % 2 === 0){
-        console.log(tokenValue)
         return <div className="tile dark-tile"><Token tokenValue={tokenValue} idx={idx} /></div>
     } else {
         return <div className="tile light-tile black-token"><Token tokenValue={tokenValue} idx={idx} /></div>

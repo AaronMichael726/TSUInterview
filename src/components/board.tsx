@@ -26,25 +26,30 @@ function checkVertical(board: any[][], i: number){
         if (verticalCount === 4){ verticalMatches ++ }
     }
 
-    // console.log("vertical iteration ", i, ": ", verticalMatches)
+    
 }
 
 function checkHorizontal(board: any[][]){
-    let horizontalCount = 1
+    let horizontalCount = 0
     let matches = 0
     
     for(let i = 7; i > 0; i--){
         // checkVertical(board, i)
         for(let j = 7; j > 0; j--){
+            // console.log('index: ',board[i][j].props.idx, ' value: ', board[i][j].props.tokenValue)
+            // // console.log('index: ',board[i][j-1].props.idx, ' value: ', board[i][j-1].props.tokenValue)
+            
             if (board[i][j].props.tokenValue === board[i][j-1].props.tokenValue){
                 horizontalCount++
-                if (horizontalCount === 4){ matches++ }
-
+                if (horizontalCount === 4){ 
+                    matches++ 
+                    console.log('found match!!! total matches: ', matches)
+                }
             } else {
                 horizontalCount = 1
             }
         }
-
+        // console.log(i, matches)
         horizontalCount = 1
     }
 
@@ -61,18 +66,25 @@ export default function Board(){
         for(let i = 0;  i < 8; i++){
 
             const gridValue = j+i + 2
-            const tokenValue = getRandomValue(3)
+            const tokenValue = Math.floor(Math.random() * 3)
+            console.log('random value: ', tokenValue)
             let color: string = "blank"
             
             if (tokenValue === 1) { color = "red" }
             if (tokenValue === 0) { color = "black" }
+
+            console.log('color: ', color)
             
             board[j].push(<Tile number={gridValue} tokenValue={color} idx={idx}/>)
             idx++
-        }
+            
+            // console.log(board[j][i].props)
+            // console.log(color)
+
+            color = 'blank'
+        } 
     }
-    
-    checkHorizontal(board)
+    // checkHorizontal(board)
     
     /**
      * What: Count possible matches 
