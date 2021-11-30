@@ -7,14 +7,3 @@
     background-color: blue; 
 }
 
-#board .tile { 
-    width: 100px;
-    height: 100px;
-}
-
-#board .black-tile {
-    background-color: #779556;
-}
-#board .white-tile {
-    background-color: #ebecd0;
-}
