@@ -1,6 +1,7 @@
 import React from 'react'
 import './board.css'
 import Tile from './tile'
+import Token from './token'
 
 // horizontal and vertical axis consts for testing
 // const verticalAxis = [1,2,3,4,5,6,7,8]
@@ -19,14 +20,16 @@ export default function Board(){
     
 
     for(let j = 0; j < 8; j++){
+        board[j] = new Array()
+
         for(let i = 0;  i < 8; i++){
 
             const gridValue = j+i + 2
-            const tokenValue = getRandomValue(3)
-            
-            board.push(<Tile number={gridValue} tokenValue={tokenValue}/>)
+            board[j].push(<Tile number={gridValue} />)
         }
     }
+
+
 
     return <div id="board">{board}</div>
 }
