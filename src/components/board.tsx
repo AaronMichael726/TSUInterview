@@ -16,26 +16,42 @@ import Tile from './tile'
 
 export default function Board(){
     let board = []
-    const tokenArray = new Array()
+    let tokenArray = new Array()
 
     // I know there are 64 spaces, making this array 64 units for testing rn
-    for (let i = 0; i <= 63; i++){
-        tokenArray.push(getRandomValue(3))
+    for (let i = 0; i < 8; i++){
+        tokenArray[i] = new Array()
+        for (let j = 0; j < 8; j++){
+            tokenArray[i].push(getRandomValue(3))
+        }   
     }
 
-    let idx = 0
-
-    console.log('first run through ', tokenArray)
-    for(let j = 0; j < 8; j++){
-        for(let i = 0;  i < 8; i++){
-
+    for(let i = 0; i < 8; i++){
+        for(let j = 0;  j < 8; j++){
             const gridValue = j+i + 2
-            board.push(<Tile number={gridValue} tokenValue={tokenArray[idx]}/>)
-            idx++
+            board.push(<Tile number={gridValue} tokenValue={tokenArray[i][j]}/>)
         }
     }
 
-    console.log('second run through ', tokenArray)
+    // test that all values in tokenArray are equal to the token value
+    // test confirms that array === tokenValue we can safely run logic on array
+    // console.log(tokenArray[0][0])
+    // console.log(board[0].props.tokenValue)
+
+    // let isTrue = 0
+    // let idx = 0
+    // for (let i=0; i < 8; i++){
+    //     for (let j = 0; j < 8; j++){
+    //         console.log(typeof tokenArray[i][j])
+    //         console.log(typeof board[idx].props.tokenValue)
+    //         if (tokenArray[i][j] === board[idx].props.tokenValue){
+    //             isTrue++
+    //         }
+    //         idx++
+    //     }
+
+    //     console.log(isTrue)
+    // }
 
     return <div id="board">{board}</div>
 }
