@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
 import Board from './components/board'
-import Button from './components/button';
-import Counter from './counter'
+import CountButton from './components/button';
+import ResetButton from './components/reset';
+import Count from './components/counter';
+
 import generateTokenArray from './generateTokens'
 
 function App() {
@@ -12,8 +14,9 @@ function App() {
     return (
         <div id="app">
             <Board tokenArray={tokenArray} />
-            <Button />
-            <Counter tokenArray={tokenArray} />
+            <CountButton />
+            <Count tokenArray={tokenArray} />
+            <ResetButton />
         </div>
     );
 }

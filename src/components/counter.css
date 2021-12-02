@@ -1,0 +1,8 @@
+.counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px; 
+    width: auto;
+    background-color: white; 
+}
