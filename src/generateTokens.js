@@ -28,6 +28,4 @@ function generateTokenArray() {
     return tokenArray
 }
 
-
-
 export default generateTokenArray()

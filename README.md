@@ -43,8 +43,7 @@ Automated tests proved to be difficult with the design. This is an Area that I o
 
 As a point of candor, I ran out of time. Were I to have more time, I would update the application to include separate buttons and input from the EndUser and test each component separately. Unfortunately, I spent too much time testing the "win-logic" and developing the randomized board placement.
 
-I've attached a screenshot of the win-logic-tests below
-
+I did this through separate functions, and logs, and several end-to-end tests checking by hand. 
 
 
 ### Final Product
