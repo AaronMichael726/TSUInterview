@@ -1,4 +1,4 @@
-#TSU Technical Interview
+# TSU Technical Interview
 
 Project to be completed as a part of the interview process with Texas State University
 
