@@ -1,20 +1,18 @@
 import React from 'react';
 import './App.css';
 import Board from './components/board'
+import Count from './components/counter';
 
-// complete according to readME
-
-/**
- * Create Board 
- * 8x8 Checkerboard
- */
-
-
+import generateTokenArray from './generateTokens'
 
 function App() {
+
+    let tokenArray = generateTokenArray
+
     return (
         <div id="app">
-            <Board />
+            <Board tokenArray={tokenArray} />
+            <Count tokenArray={tokenArray} />
         </div>
     );
 }

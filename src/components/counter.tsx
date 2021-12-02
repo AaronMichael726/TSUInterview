@@ -10,7 +10,7 @@ const isHorizontal = (tokenArray: any[][]) => {
     let count = 0
     let matchCount = 0
 
-    for(let i = 7; i >0; i--){
+    for(let i = 7; i >= 0; i--){
         for (let k = 7; k > 0; k--){
             if (tokenArray[i][k] === tokenArray[i][k-1]){ 
                 count++ 
@@ -34,7 +34,7 @@ const isVertical = (tokenArray: any[][]) => {
     let count = 0
     let vertCount = 0
 
-    for(let i = 7; i >0; i--){
+    for(let i = 7; i >= 0; i--){
         for (let k = 7; k > 0; k--){
 
             if (tokenArray[k][i] === tokenArray[k-1][i]){ 
@@ -189,11 +189,9 @@ const isCounterDiag = (tokenArray: any[][], init: number) => {
 
 export default function Count(tokenArray: Props){
 
-    let diagonalCount = findDiagMatches(tokenArray.tokenArray)
-
-    let count = isHorizontal(tokenArray.tokenArray) + isVertical(tokenArray.tokenArray)
-
-    count += diagonalCount
+    let count = isHorizontal(tokenArray.tokenArray) 
+                + isVertical(tokenArray.tokenArray)
+                + findDiagMatches(tokenArray.tokenArray)
 
     return <div className="counter">Total Matches: {count}</div>
 }
