@@ -18,6 +18,7 @@ const isHorizontal = (tokenArray: any[][]) => {
                 count = 0
             }
             if (count === 3){
+                console.log('found a horizontal match at ', i, k)
                 matchCount++
                 count = 0
             }
@@ -42,7 +43,7 @@ const isVertical = (tokenArray: any[][]) => {
                 count = 0
             }
             if (count === 3){
-
+                console.log('found a vertical match at ', k, i)
                 vertCount++
                 count = 0
             }
@@ -59,39 +60,50 @@ const isVertical = (tokenArray: any[][]) => {
  *          
  *   */ 
 
-let diagonalMatch = 0
-
-const isDiag = (tokenArray: any[][], init: number, diagMatch: number) => {
+const isDiag = (tokenArray: any[][], init: number) => {
     
-    let diagonalMatch = diagMatch
+    let diagonalMatch = 0
+
     let count = 0
     
     if (init === 0){
         for (let i = 0; i < 7; i++){
-            if(tokenArray[i][init] === tokenArray[i+1][init+1]){ 
-                count++ }
+            if(tokenArray[i][init+i] === tokenArray[i+1][init+i+1]){ 
+                count++ 
+            } else {
+                count = 0
+            }
             if (count === 3){
+                console.log('found diag at init = ', init, ': ', i, (init+i))
                 diagonalMatch++
                 count = 0
             }
         }
-        count = 0
+        
     }
 
     if (init > 0 && init < 7){
         for (let i = 0; i < (7-init); i++){
-            if(tokenArray[i][init] === tokenArray[i+1][init+1]){ 
-                count++ }
+            if(tokenArray[i][init+i] === tokenArray[i+1][init+i+1]){ 
+                count++ 
+            } else {
+                count = 0
+            }
             if (count === 3){
+                console.log('found diag at init = ', init, ': ', i, (init+i))
                 diagonalMatch++
                 count = 0
             }
         }
         count = 0
         for (let i = 0; i < (7-init); i++){
-            if(tokenArray[init][i] === tokenArray[init+1][i+1]){ 
-                count++ }
+            if(tokenArray[init+i][i] === tokenArray[init+i+1][i+1]){ 
+                count++ 
+            } else {
+                count = 0 
+            }
             if (count === 3){
+                console.log('found diag at init = ', init, ': ', (init+i), i,)
                 diagonalMatch++
                 count = 0
             }
@@ -99,23 +111,37 @@ const isDiag = (tokenArray: any[][], init: number, diagMatch: number) => {
         count = 0
     }
 
-    if (init < 4 ){ isDiag(tokenArray, (init+1), diagonalMatch) }
+    return diagonalMatch
+}
+
+const findDiagMatches = (tokenArray: any[][]) => {
+    let diagonalMatch = 0
+
+    for (let i = 0; i < 4; i++){
+        diagonalMatch += isDiag(tokenArray, i)
+    }
+
+    for (let i = 7; i > 2; i--){
+        diagonalMatch += isCounterDiag(tokenArray, i)
+    }
 
     return diagonalMatch
 }
 
-const isCounterDiag = (tokenArray: any[][], init: number, diagMatch: number) => {
+const isCounterDiag = (tokenArray: any[][], init: number) => {
     
-    let diagonalMatch = diagMatch
     let count = 0
-    
+    let diagonalMatch = 0
+
     if (init === 7){
         for (let i = 0; i < 7; i++){
-            if(tokenArray[i][init] === tokenArray[i+1][init-1]){ 
-                count++ }
+            if(tokenArray[i][init-i] === tokenArray[i+1][init-i-1]){ 
+                count++ 
+            } else {
+                count = 0 
+            }
             if (count === 3){
-                console.log('isCounterDiag function init = 7: ')
-                console.log('found coutner diag: ', i, init)
+                console.log('LIne 146: found coutner diag at init = ', init, ': ', i, (init-i))
                 diagonalMatch++
                 count = 0
             }
@@ -124,27 +150,38 @@ const isCounterDiag = (tokenArray: any[][], init: number, diagMatch: number) => 
     }
 
     if (init < 7 && init > 3){
-        for (let i = init; i > 3; i--){
+        for (let i = 0; i < init; i++){
+            
+            if (tokenArray[i][init-i] === tokenArray[i+1][init-i-1]){
+                count++
+            }else {
+                count = 0
+            }
+
             if (count === 3){
+                console.log('Line 164: found counter diag at init = ', init, ': ', i, (init-i))
                 diagonalMatch++
                 count = 0
-                console.log('total: ', diagonalMatch)
             }
         }
         count = 0
+
+        let index = 0
         for (let i = 7; i > (7 - init); i--){
-            if(tokenArray[i][init] === tokenArray[i-1][init-1]){
+            if(tokenArray[i][i-init+(2*index)] === tokenArray[i-1][i-init+(2*index)+1]){
                 count++ 
+            } else {
+                count = 0 
             }
             if (count === 3){
+                console.log('line 178: found counter diag at init = ', init, ': ', i, (i-init+(2*index)))
                 diagonalMatch++
                 count = 0
             }
+            index++
         }
         count = 0
     }
-
-    if (init > 3 ){ isCounterDiag(tokenArray, (init-1), diagonalMatch) }
 
     return diagonalMatch
 }
@@ -152,11 +189,11 @@ const isCounterDiag = (tokenArray: any[][], init: number, diagMatch: number) => 
 
 export default function Count(tokenArray: Props){
 
-    let diagonalCount = isDiag(tokenArray.tokenArray, 0, 0) + isCounterDiag(tokenArray.tokenArray, 7, 0)
+    let diagonalCount = findDiagMatches(tokenArray.tokenArray)
 
     let count = isHorizontal(tokenArray.tokenArray) + isVertical(tokenArray.tokenArray)
 
     count += diagonalCount
 
-    return <div className="counter">{count}</div>
+    return <div className="counter">Total Matches: {count}</div>
 }
