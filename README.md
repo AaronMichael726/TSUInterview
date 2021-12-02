@@ -29,7 +29,7 @@ This is the intial wireframe where I considered how to make the board in compone
 ![wirefram](./public/assets/wirefram.jpeg)
 
 How I imagined the diagonal function
-![diagonalFunction](./public/assests/diagonal.jpeg)
+![diagonalFunction](./public/assests/IMG_0051.jpeg)
 
 ### Trouble Areas
 
