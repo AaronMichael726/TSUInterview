@@ -21,7 +21,7 @@ As a former program manager, I am proud of the planning I put in to each product
 
 Project was planned as a small scrum board to break down the steps to complete.
 Project Board Snapshot:
-![project_board](./assests/ProjectBoard.png)
+![project_board](./assets/ProjectBoard.png)
 
 Handwritten Plans: 
 
