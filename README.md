@@ -26,10 +26,10 @@ Project Board Snapshot:
 Handwritten Plans: 
 
 This is the intial wireframe where I considered how to make the board in components
-![wirefram](./assets/wirefram.jpeg)
+![wirefram](./public/assets/wirefram.jpeg)
 
 How I imagined the diagonal function
-![diagonalFunction](./assests/diagonal.jpeg)
+![diagonalFunction](./public/assests/diagonal.jpeg)
 
 ### Trouble Areas
 
@@ -49,4 +49,4 @@ I've attached a screenshot of the win-logic-tests below
 
 ### Final Product
 
-![final_picture](./assets/completedProduct.png)
+![final_picture](./public/assets/completedProduct.png)
