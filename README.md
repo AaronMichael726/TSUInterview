@@ -9,7 +9,7 @@ Requirements:
  
 * Write automated tests to verify that your program functions correctly.
 
-# Process in Completely the Application
+# Process in Completing the Application
 
 ### Ideation
 
